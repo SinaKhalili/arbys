@@ -1,0 +1,30 @@
+import os
+
+from web3 import Web3
+from binance import Client
+
+from dotenv import load_dotenv
+
+load_dotenv()  # take environment variables from .env.
+
+api_key = os.environ.get("binance_api_key")
+api_secret = os.environ.get("binance_api_secret")
+
+print(api_key, api_secret)
+
+
+def connect_to_harmony(rpc):
+    """
+    Connect to the harmony RPC endpoint
+    """
+    w3 = Web3(Web3.HTTPProvider(rpc))
+    if not w3.isConnected():
+        print(f"Could not connected to harmony RPC: {rpc}")
+        return None
+    return w3
+
+
+def connect_to_binance():
+
+    binance_client = Client(api_key, api_secret)
+    return binance_client

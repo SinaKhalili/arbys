@@ -1,6 +1,9 @@
 from threading import Thread
 from time import sleep
 import readline
+from dotenv import load_dotenv
+
+load_dotenv()  # take environment variables from .env.
 
 readline.parse_and_bind("tab: complete")
 
